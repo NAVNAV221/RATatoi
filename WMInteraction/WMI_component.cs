@@ -11,6 +11,7 @@ namespace WMInteraction
         private string wmiClass;
         private string wmiAttributes;
         private Query query;
+        private Dictionary<string, Object> wmiProperties;
 
         public WMI_component(string scope, string wmi_class, string wmiAttributes)
         {
@@ -18,24 +19,53 @@ namespace WMInteraction
             this.wmiClass = wmi_class;
             this.wmiAttributes = wmiAttributes;
             this.query = new Query(this.scope, this.wmiAttributes, this.wmiClass);
+            this.wmiProperties = this.RetriveWMIData();
         }
 
-        public string WmiClass { get; set; }
-
-        public string Scope { get; set; }
-
-        public string WmiAttribute { get; set; }
-
-        public void RetriveWMIData()
+        public string WmiClass
         {
+            get { return wmiClass; }
+            set { wmiClass = value; }
+        }
+
+        public string Scope
+        {
+            get { return scope; }
+            set { scope = value; }
+        }
+
+        public string WmiAttribute
+        {
+            get { return wmiAttributes; }
+            set { wmiAttributes = value; }
+        }
+
+        public Query Query
+        {
+            get { return query; }
+            set { query = value; }
+        }
+
+        public Dictionary<string, Object> WmiProperties
+        {
+            get { return wmiProperties; }
+            set { wmiProperties = value; }
+        }
+
+        Dictionary<string, Object> RetriveWMIData()
+        {
+            Dictionary<string, Object> properties = new Dictionary<string, Object>();
+
             ManagementObjectCollection queryCollection = query.ExecuteQuery();
             foreach (ManagementObject obj in queryCollection)
             {
                 foreach (PropertyData property in obj.Properties)
                 {
-                    Console.WriteLine("Proerty Name: {0} | Property Value: {1}", property.Name, property.Value);
+                    properties.Add(property.Name, property.Value);
                 }
             }
+
+            return properties;
         }
 
     }
