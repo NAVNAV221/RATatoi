@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "KMMPAHh6Ou5+TABkHCwOdjpG0KNo0c9EcvFE77IZLofgmhuUv6VuX0JHJ7Y7iTrTiBpThoRPQAVgVA+13tB7Zw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\navnav221\\source\\repos\\WMInteraction\\WMInteraction\\WMInteraction.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\navnav221\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\navnav221\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\navnav221\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
+    "C:\\Users\\navnav221\\.nuget\\packages\\system.management\\6.0.0\\system.management.6.0.0.nupkg.sha512",
+    "C:\\Users\\navnav221\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\navnav221\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
