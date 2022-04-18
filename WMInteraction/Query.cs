@@ -26,7 +26,7 @@ namespace WMInteraction
 
         ObjectQuery BuildQuery(string wmi_attributes, string wmi_class)
         {
-            ObjectQuery query = new ObjectQuery("SELECT " + wmi_attributes + "FROM " + wmi_class);
+            ObjectQuery query = new ObjectQuery("SELECT " + wmi_attributes + " FROM " + wmi_class);
             return query;
         }
 
