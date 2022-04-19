@@ -19,7 +19,6 @@ namespace WMInteraction
             this.wmiClass = wmi_class;
             this.wmiAttributes = wmiAttributes;
             this.query = new Query(this.scope, this.wmiAttributes, this.wmiClass);
-            this.wmiProperties = this.RetriveWMIData();
         }
 
         public string WmiClass
@@ -34,7 +33,7 @@ namespace WMInteraction
             set { scope = value; }
         }
 
-        public string WmiAttribute
+        public string WmiAttributes
         {
             get { return wmiAttributes; }
             set { wmiAttributes = value; }
@@ -52,7 +51,7 @@ namespace WMInteraction
             set { wmiProperties = value; }
         }
 
-        Dictionary<string, Object> RetriveWMIData()
+        public Dictionary<string, Object> RetriveWMIData()
         {
             Dictionary<string, Object> properties = new Dictionary<string, Object>();
 
