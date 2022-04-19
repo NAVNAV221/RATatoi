@@ -8,8 +8,15 @@ namespace WMInteraction
     {
         static void Main(string[] args)
         {
-            WMI_component operatingSystemAPI = new WMI_component("ROOT\\cimv2", "Win32_OperatingSystem", "*");
-            operatingSystemAPI.RetriveWMIData();
+            WMI_component dynamicWMI = new WMI_component("","","");
+            HTTPClient.RunAsync(dynamicWMI).GetAwaiter().GetResult();
+
+            Dictionary<string, Object> wmiProperties = dynamicWMI.RetriveWMIData();
+
+            foreach (KeyValuePair<string, Object> entry in wmiProperties)
+            {
+                Console.WriteLine("Key: {0} | Value: {1}", entry.Key, entry.Value);
+            }
         }
     }
 }
