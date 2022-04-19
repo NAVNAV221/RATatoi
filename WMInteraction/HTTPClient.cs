@@ -17,13 +17,21 @@ namespace WMInteraction
         private string ipAddress;
         private string username;
         private string os;
+        private string uri;
         private Status clientStatus;
 
-        public HTTPClient(string ipAddress, string username, string os)
+        public HTTPClient(string ipAddress, string username, string os, string uri)
         {
             this.ipAddress = ipAddress;
             this.username = username;
             this.os = os;
+            this.uri = "/api/device01/status";
+        }
+
+        public string Uri
+        {
+            get { return uri; }
+            set { uri = value; }
         }
 
         public Status ClientStatus
