@@ -6,14 +6,18 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.wmi_class.label }}<br>
-            {{ form.wmi_class }}
+            {{ form.wmi_class(size=32) }}
         </p>
         <p>
             {{ form.wmi_attributes.label }}<br>
-            {{ form.wmi_attributes }}
+            {{ form.wmi_attributes(size=32) }}
         </p>
-         <p>
+        <p>
             {{ form.wmi_scope.label }}<br>
-            {{ form.wmi_scope }}
+            {{ form.wmi_scope(size=32) }}
+        </p>
+        <p>
+            {{ form.submit() }}
         </p>
     </form>
+{% endblock %}
