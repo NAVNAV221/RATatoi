@@ -1,7 +1,7 @@
 from app import db
 
 CLIENT_PROPERTIES = ['id', 'os_name', 'ip_address', 'wmi_actions']
-WMI_PROPERTIES = ['id', 'wmi_class', 'wmi_attributes', 'wmi_scope']
+WMI_PROPERTIES = ['id', 'wmi_query']
 
 client_wmiAction = db.Table('client_wmiAction',
                             db.Column('client_id', db.Integer, db.ForeignKey('client.id')),
@@ -39,16 +39,12 @@ class Client(db.Model):
 
 class WMIAction(db.Model):
     id = db.Column(db.String(64), primary_key=True)
-    wmi_class = db.Column(db.String(64), index=True, unique=True)
-    wmi_attributes = db.Column(db.String(128), index=True)
-    wmi_scope = db.Column(db.String(64), index=True)
+    wmi_query = db.Column(db.String(64), index=True, unique=True)
 
     def to_dict(self):
         wmi_data = {
             'id': self.id,
-            'wmi_class': self.wmi_class,
-            'wmi_attributes': self.wmi_attributes,
-            'wmi_scope': self.wmi_scope
+            'wmi_query': self.wmi_query
         }
         return wmi_data
 
