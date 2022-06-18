@@ -38,7 +38,7 @@ class Client(db.Model):
                 setattr(self, field, client_data[field])
 
     def __repr__(self):
-        return f'{self.id} | {self.os_name} | {self.ip_address} | {self.wmi_action}'
+        return f'{self.id} | {self.os_name} | {self.ip_address}'
 
 
 class WMIAction(db.Model):
