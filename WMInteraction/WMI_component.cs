@@ -60,7 +60,11 @@ namespace WMInteraction
             {
                 foreach (PropertyData property in obj.Properties)
                 {
-                    properties.Add(property.Name, property.Value);
+                    Console.WriteLine(property.Name + " | " + property.Value);
+                    if (!properties.ContainsKey(property.Name))
+                    {
+                        properties.Add(property.Name, property.Value);
+                    }
                 }
             }
 
