@@ -1,16 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Register Action</h1>
-    <form action="" method="post" novalidate>
+    <h1>Register WMI Action</h1>
+    <form method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
             {{ form.wmi_class.label }}<br>
             {{ form.wmi_class(size=32) }}
-        </p>
-        <p>
-            {{ form.wmi_attributes.label }}<br>
-            {{ form.wmi_attributes(size=32) }}
         </p>
         <p>
             {{ form.wmi_scope.label }}<br>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Assign wmi action to user id</h1>
+    <form method="post">
+        <h2>Select WMI action</h2>
+        {{ form.wmi_actions_opts }}
+        <h2>Select user id</h2>
+        {{ form.client_id_opts }}<br><br>
+        {{ form.submit() }}
+    </form>
+{% endblock %}

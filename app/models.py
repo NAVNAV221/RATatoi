@@ -1,7 +1,7 @@
 from app import db
 
 CLIENT_PROPERTIES = ['id', 'os_name', 'ip_address', 'wmi_actions']
-WMI_PROPERTIES = ['id', 'wmi_query']
+WMI_PROPERTIES = ['id', 'wmi_class', 'wmi_scope']
 
 client_wmiAction = db.Table('client_wmiAction',
                             db.Column('client_id', db.Integer, db.ForeignKey('client.id')),
@@ -20,6 +20,10 @@ class Client(db.Model):
     def wmi_action_dict(self):
         return [wmi_action.to_dict() for wmi_action in self.wmi_action]
 
+    def set_wmi_action(self, wmi_action_object):
+        self.wmi_action.append(wmi_action_object)
+        db.session.commit()
+
     def to_dict(self):
         client_data = {
             'id': self.id,
@@ -34,17 +38,22 @@ class Client(db.Model):
                 setattr(self, field, client_data[field])
 
     def __repr__(self):
-        return f'[User Description] {self.id} | {self.os_name} | {self.ip_address} | {self.wmi_action}'
+        return f'{self.id} | {self.os_name} | {self.ip_address} | {self.wmi_action}'
 
 
 class WMIAction(db.Model):
+    """
+    This model used for describing wmi action
+    """
     id = db.Column(db.String(64), primary_key=True)
-    wmi_query = db.Column(db.String(64), index=True, unique=True)
+    wmi_class = db.Column(db.String(64), index=True, unique=True)
+    wmi_scope = db.Column(db.String(64), index=True)
 
     def to_dict(self):
         wmi_data = {
             'id': self.id,
-            'wmi_query': self.wmi_query
+            'wmi_class': self.wmi_class,
+            'wmi_scope': self.wmi_scope
         }
         return wmi_data
 
@@ -52,3 +61,6 @@ class WMIAction(db.Model):
         for field in WMI_PROPERTIES:
             if field in wmi_data:
                 setattr(self, field, wmi_data[field])
+
+    def __repr__(self):
+        return f"{self.id} | {self.wmi_class} | {self.wmi_scope}"
