@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<select class="form-control" id="select_client_id">
+    {% for client in clients %}
+    <option>{{ client.id }} | {{ client.os_name }} | {{ client.ip_address }}</option>
+    {% endfor %}
+</select>
+<script>
+    $('#select_client_id').on('change', function() {
+        var client_selection = $(this).val();
+        var client_id = client_selection.split('|')[0].replace(' ', '')
+
+        document.cookie = "client_id=" + client_id;
+        location.reload();
+    });
+</script>
+{% endblock %}

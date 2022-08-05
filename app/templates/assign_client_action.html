@@ -1,11 +1,26 @@
 {% extends "base.html" %}
+{% block head %}
+<script src="{{ url_for('static', filename='scripts/search.js') }}"></script>
+{% endblock %}
+
 {% block content %}
-    <h1>Assign wmi action to user id</h1>
-    <form method="post">
-        <h2>Select WMI action</h2>
-        {{ form.wmi_actions_opts }}
-        <h2>Select user id</h2>
-        {{ form.client_id_opts }}<br><br>
-        {{ form.submit() }}
-    </form>
+<div class="container h-100" id="wmi_action_search_div">
+    <div class="row h-25 justify-content-center align-items-center">
+        <div class="col-md-6 align-self-center">
+            <input class="form-control" type="text" placeholder="WMI action search..." aria-label="Search"
+                   id="wmi_action_search" name="wmi_action_search">
+        </div>
+    </div>
+    <div class="row h-100" id="result"></div>
+</div>
+<script>
+    $(document).ready(function(){
+      $('#wmi_action_search').keyup(function(){
+        var search = $(this).val();
+        if(search != ''){
+        load_wmi_actions(search);
+       }
+      });
+    });
+</script>
 {% endblock %}

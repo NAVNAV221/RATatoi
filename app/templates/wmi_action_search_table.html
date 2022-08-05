@@ -1,0 +1,62 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">WMI Class</th>
+        <th scope="col">wmi Scope</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for wmi_action in wmi_actions %}
+    <tr>
+        <th scope="row">{{ wmi_action.id }}</th>
+        <th>{{ wmi_action.wmi_class }}</th>
+        <th>{{ wmi_action.wmi_scope }}</th>
+        <th>
+            <button data-id="{{ wmi_action.id }}" class="collect_wmi_action btn btn-primary">Assign Action
+            </button>
+        </th>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<!-- Modal -->
+<div class="modal fade" id="clientIdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Assign Action</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  $(document).ready(function() {
+    var client_id = getCookieValue('client_id');
+    if (!client_id) {
+        load_client_id();
+    }
+
+    $('.collect_wmi_action').click(function(){
+      var wmi_action_id = $(this).data('id');
+
+      $.ajax({
+        url: '/api/assign_wmi_action_to_user',
+        type: 'post',
+        data: {wmi_action_id: wmi_action_id, client_id: client_id},
+        success: function(data) {
+          console.log(data)
+        }
+      });
+    });
+  });
+
+
+
+</script>

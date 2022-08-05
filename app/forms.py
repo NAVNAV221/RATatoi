@@ -12,15 +12,10 @@ class RegisterWMIAction(FlaskForm):
     submit = SubmitField('Register WMI')
 
 
-def wmi_choice_query():
-    return WMIAction.query
-
-
 def client_id_query():
     return Client.query
 
 
 class AssignClientAction(FlaskForm):
     client_id_opts = QuerySelectField(query_factory=client_id_query, allow_blank=True)
-    wmi_actions_opts = QuerySelectField(query_factory=wmi_choice_query, allow_blank=True)
     submit = SubmitField('Assign WMI action')
