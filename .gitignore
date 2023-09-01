@@ -1,0 +1,6 @@
+venv/
+.idea/
+__pycache__/
+server/app.db
+.vs
+server/app.db

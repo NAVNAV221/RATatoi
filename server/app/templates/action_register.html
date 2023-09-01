@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Register WMI Action</h1>
+    <form method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.wmi_class.label }}<br>
+            {{ form.wmi_class(size=32) }}
+        </p>
+        <p>
+            {{ form.wmi_scope.label }}<br>
+            {{ form.wmi_scope(size=32) }}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+{% endblock %}
