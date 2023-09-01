@@ -1,4 +1,5 @@
 # Server side (Attacker)
+![server_illustrate.gif](server/server_illustrate.gif)
 ## API System
 Build a FLASK API that’ll serve what actions the RAT need to preform and how often the RAT will check the API(1).
 ## GUI Interface
