@@ -1,4 +1,4 @@
-from app import db
+from server.app import db
 
 CLIENT_PROPERTIES = ['id', 'os_name', 'ip_address', 'wmi_actions']
 WMI_PROPERTIES = ['id', 'wmi_class', 'wmi_scope']

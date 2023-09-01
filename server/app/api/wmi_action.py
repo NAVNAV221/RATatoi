@@ -1,7 +1,7 @@
 from flask import jsonify, request, render_template
 
-from app.api import api_blueprint
-from app.models import Client, WMIAction
+from server.app.api import api_blueprint
+from server.app.models import Client, WMIAction
 
 
 @api_blueprint.route('/wmi-action-search', methods=['POST'])

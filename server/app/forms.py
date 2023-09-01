@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField
+from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from wtforms_sqlalchemy.fields import QuerySelectField
-from app.models import WMIAction, Client
+from server.app import Client
 
 
 class RegisterWMIAction(FlaskForm):

@@ -1,6 +1,6 @@
 venv/
 .idea/
 __pycache__/
-app.db
+server/app.db
 .vs
-app.db
+server/app.db
