@@ -24,6 +24,10 @@ class Client(db.Model):
         self.wmi_action.append(wmi_action_object)
         db.session.commit()
 
+    def del_wmi_action(self, wmi_action_object):
+        self.wmi_action.remove(wmi_action_object)
+        db.session.commit()
+
     def to_dict(self):
         client_data = {
             'id': self.id,
